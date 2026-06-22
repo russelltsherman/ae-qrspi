@@ -1,0 +1,5 @@
+{
+  "phase": "design",
+  "artifact": "design.md",
+  "requiredSections": ["## Current state", "## Desired end state", "## Design decisions"]
+}

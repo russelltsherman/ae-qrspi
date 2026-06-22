@@ -1,0 +1,5 @@
+{
+  "phase": "questions",
+  "artifact": "questions.md",
+  "requiredSections": ["## Questions"]
+}

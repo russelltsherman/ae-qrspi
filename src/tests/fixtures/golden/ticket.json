@@ -1,0 +1,10 @@
+{
+  "phase": "ticket",
+  "artifact": "ticket.md",
+  "_comment": "Golden expectation for the ticket phase: deterministic facts an L1 behavioral test asserts (never wording). Consumed starting in M1.",
+  "requiredSections": ["## Request", "## Intent", "## Out of scope"],
+  "mustNotContain": {
+    "_comment": "ticket captures the request, not a solution — no premature design tokens",
+    "patterns": ["function ", "```", "import "]
+  }
+}

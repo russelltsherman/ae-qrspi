@@ -1,0 +1,14 @@
+{
+  "name": "qrspi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local test harness for the QRSPI Claude Code plugin (structural L0 + behavioral L1).",
+  "type": "module",
+  "scripts": {
+    "test": "node --test scripts/*.test.mjs tests/structural/*.test.mjs tests/eval/*.test.mjs",
+    "test:behavior": "node tests/lib/iso-home.mjs && QRSPI_TEST_LIVE=1 node --test --test-concurrency=1 tests/behavioral/*.test.mjs",
+    "test:eval": "node tests/lib/iso-home.mjs && QRSPI_EVAL_LIVE=1 node tests/eval/grade.mjs",
+    "test:routing": "node tests/lib/iso-home.mjs && QRSPI_EVAL_LIVE=1 node tests/eval/routing-probes.mjs",
+    "test:all": "npm test && npm run test:behavior && npm run test:eval && npm run test:routing"
+  }
+}

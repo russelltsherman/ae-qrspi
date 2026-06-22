@@ -1,0 +1,6 @@
+{
+  "phase": "plan",
+  "artifact": "plan.md",
+  "requiredSections": ["## Steps"],
+  "_comment": "Every step must reference a slice; the live test asserts the word 'slice' appears in the steps."
+}

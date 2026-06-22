@@ -1,0 +1,10 @@
+{
+  "name": "tasks-app",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Tiny in-memory task list used as a second QRSPI fixture (a different domain than sample-app).",
+  "scripts": {
+    "start": "node src/cli.js"
+  }
+}

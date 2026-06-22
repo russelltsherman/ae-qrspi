@@ -1,0 +1,10 @@
+{
+  "name": "sample-app",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Tiny reports app used as a QRSPI behavioral-test fixture.",
+  "scripts": {
+    "start": "node src/server.js"
+  }
+}

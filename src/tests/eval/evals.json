@@ -1,0 +1,115 @@
+{
+  "_about": "Layer-2 rubric evals (mvp-plan §11). These check QUALITATIVE properties the L0 structural and L1 behavioral layers cannot: that the researcher stayed factual, the designer surfaced trade-offs, the slices are genuinely vertical, etc. Each case generates its artifact fresh via headless Claude Code, then an LLM judge grades it against `expectations`. Schema is aligned with skill-creator's evals.json (id/prompt/expected_output/expectations) plus QRSPI seeding fields. `hardGate: true` marks the cases the smoke run grades by default; override with QRSPI_EVAL_CASES.",
+  "bar": 0.8,
+  "cases": [
+    {
+      "id": 1,
+      "skill": "qrspi-ticket",
+      "phase": "ticket",
+      "fixture": "tasks-app",
+      "fresh": true,
+      "prompt": "/qrspi-ticket add full-text search across tasks so users can find a task by a word in its body",
+      "artifact": "ticket.md",
+      "expected_output": "A ticket.md that captures the request and its intent WITHOUT prescribing a solution.",
+      "expectations": [
+        "The ticket has a Request section, an Intent section, and an Out of scope section.",
+        "The Request captures WHAT the user wants (search tasks by a word), not HOW to build it.",
+        "The ticket does NOT prescribe an implementation: it names no specific function, data structure, library, index, or algorithm.",
+        "The Intent states the underlying goal (finding a task) rather than a design."
+      ]
+    },
+    {
+      "id": 2,
+      "skill": "qrspi-research",
+      "phase": "research",
+      "fixture": "sample-app",
+      "seedFeature": "add-csv-export",
+      "seedThrough": "questions",
+      "seedArtifacts": ["ticket", "questions"],
+      "prompt": "/qrspi-research add-csv-export",
+      "artifact": "research.md",
+      "expected_output": "A ticket-blind, cited factual map answering the questions — no opinions or recommendations.",
+      "hardGate": true,
+      "expectations": [
+        "Every factual claim about the code is either backed by a path:line citation or explicitly flagged [UNVERIFIED]/[UNKNOWN]; there are no un-cited, un-flagged assertions about how the code behaves.",
+        "The document is a factual MAP: it does NOT recommend a design, propose a solution, or say what SHOULD be done.",
+        "It does not reference the desired feature (CSV export) as a decided goal — it reads as if blind to the ticket.",
+        "Citations point at real files in the fixture (e.g. src/reports.js, src/server.js)."
+      ]
+    },
+    {
+      "id": 3,
+      "skill": "qrspi-design",
+      "phase": "design",
+      "fixture": "sample-app",
+      "seedFeature": "add-csv-export",
+      "seedThrough": "research",
+      "seedArtifacts": ["ticket", "questions", "research"],
+      "prompt": "/qrspi-design add-csv-export",
+      "artifact": "design.md",
+      "expected_output": "A grounded design: current state, desired end state, and decisions with explicit trade-offs.",
+      "hardGate": true,
+      "expectations": [
+        "It has Current state, Desired end state, and Design decisions sections.",
+        "Each design decision states a rationale AND an explicit trade-off (what is given up, or a rejected alternative) — decisions are not asserted without justification.",
+        "The current state is grounded in the research/code (it cites or paraphrases real behavior), not invented.",
+        "It stays a design, not a tactical plan: it does not enumerate step-by-step build instructions."
+      ]
+    },
+    {
+      "id": 4,
+      "skill": "qrspi-structure",
+      "phase": "structure",
+      "fixture": "sample-app",
+      "seedFeature": "add-csv-export",
+      "seedThrough": "design",
+      "seedArtifacts": ["ticket", "questions", "research", "design"],
+      "prompt": "/qrspi-structure add-csv-export",
+      "artifact": "structure.md",
+      "expected_output": "Signatures/types plus a vertical-slice table whose slices are genuinely independently testable.",
+      "hardGate": true,
+      "expectations": [
+        "It has a Signatures & types section and a Vertical slices table with columns slice, description, touches, checkpoint.",
+        "Each slice is a thin END-TO-END path (vertical), NOT a horizontal layer like 'define all the types' or 'write all the tests'.",
+        "Each slice's checkpoint observes real behavior (a test that passes, a response shape) — none is merely 'code compiles' or 'it builds'.",
+        "The slices are independently testable: an earlier slice can be verified without the later ones existing."
+      ]
+    },
+    {
+      "id": 5,
+      "skill": "qrspi-plan",
+      "phase": "plan",
+      "fixture": "sample-app",
+      "seedFeature": "add-csv-export",
+      "seedThrough": "structure",
+      "seedArtifacts": ["ticket", "questions", "research", "design", "structure"],
+      "prompt": "/qrspi-plan add-csv-export",
+      "artifact": "plan.md",
+      "expected_output": "Ordered tactical steps, each tied to a slice, with no new design introduced.",
+      "expectations": [
+        "It has a Steps section with an ordered list of tactical steps.",
+        "EVERY step is tagged with the slice it belongs to; no step is left without a slice.",
+        "Steps are tactical (how to build), not strategic — they do not introduce new design decisions, types, or slices beyond the structure.",
+        "Within a slice, the steps are ordered so the slice's checkpoint can run at the end."
+      ]
+    },
+    {
+      "id": 6,
+      "skill": "qrspi-worktree",
+      "phase": "worktree",
+      "fixture": "sample-app",
+      "seedFeature": "add-csv-export",
+      "seedThrough": "plan",
+      "seedArtifacts": ["ticket", "questions", "research", "design", "structure", "plan"],
+      "prompt": "/qrspi-worktree add-csv-export",
+      "artifact": "worktree.md",
+      "expected_output": "A slice→branch map with one independently testable unit per branch.",
+      "expectations": [
+        "It has a Branches section mapping each slice to a branch/task.",
+        "Each branch carries exactly ONE slice (one independently testable unit), not a bundle of slices.",
+        "Branch dependencies/order reflect the slice order (later branches depend on earlier ones).",
+        "Every slice from the structure is accounted for by some branch."
+      ]
+    }
+  ]
+}

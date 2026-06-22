@@ -1,0 +1,10 @@
+{
+  "name": "qrspi",
+  "version": "0.1.0",
+  "description": "A multi-phase coding pipeline (Questions → Research → Design → Structure → Plan → WorkTree → Implement → PR) whose phase agents coordinate through filesystem artifacts instead of shared context.",
+  "author": {
+    "name": "Russell Sherman",
+    "url": "https://github.com/russelltsherman/ae-qrspi"
+  },
+  "keywords": ["workflow", "multi-agent", "context-engineering", "vertical-slices", "human-in-the-loop", "planning"]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "ae-qrspi",
+  "description": "Russell Sherman's Claude Code plugins for agentic engineering workflows.",
+  "owner": {
+    "name": "Russell Sherman",
+    "url": "https://github.com/russelltsherman/ae-qrspi"
+  },
+  "plugins": [
+    {
+      "name": "qrspi",
+      "source": "./src",
+      "description": "A multi-phase coding pipeline (Questions → Research → Design → Structure → Plan → WorkTree → Implement → PR) whose phase agents coordinate through filesystem artifacts."
+    }
+  ]
+}

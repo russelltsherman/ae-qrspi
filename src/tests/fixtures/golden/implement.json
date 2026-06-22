@@ -1,0 +1,6 @@
+{
+  "phase": "implement",
+  "artifact": "implement.md",
+  "requiredSections": ["## Slices"],
+  "_comment": "The implement phase edits code AND logs each slice's checkpoint result; the live test asserts both the code change and implement.md."
+}

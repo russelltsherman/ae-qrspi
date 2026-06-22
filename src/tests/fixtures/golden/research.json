@@ -1,0 +1,6 @@
+{
+  "phase": "research",
+  "artifact": "research.md",
+  "requiredSections": ["## Findings"],
+  "_comment": "Withhold canary + no-recommendation are asserted by the live test, not by section presence."
+}

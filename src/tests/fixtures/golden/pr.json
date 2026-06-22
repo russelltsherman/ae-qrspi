@@ -1,0 +1,6 @@
+{
+  "phase": "pr",
+  "artifact": "pr.md",
+  "requiredSections": ["## Summary", "## Changes", "## Test plan", "## Self-review notes"],
+  "_comment": "pr.md is a draft for the human; the pr phase never pushes or opens a PR."
+}

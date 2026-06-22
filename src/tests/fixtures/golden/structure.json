@@ -1,0 +1,6 @@
+{
+  "phase": "structure",
+  "artifact": "structure.md",
+  "requiredSections": ["## Signatures & types", "## Vertical slices"],
+  "sliceTableColumns": ["slice", "description", "touches", "checkpoint"]
+}

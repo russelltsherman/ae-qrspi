@@ -1,0 +1,6 @@
+{
+  "phase": "worktree",
+  "artifact": "worktree.md",
+  "requiredSections": ["## Branches"],
+  "_comment": "Branches map each slice to one independently testable unit; the live test asserts the slices appear."
+}
